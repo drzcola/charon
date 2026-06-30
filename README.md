@@ -149,5 +149,19 @@ charon/
 │   └── modules/        # attack modules (one file each, auto-loaded)
 ├── vendor/
 │   └── impacket/       # patched impacket
+├── LICENSE
+├── NOTICE
 └── pyproject.toml
 ```
+
+---
+
+## License & attribution
+
+Charon is licensed under the Apache License 2.0. See `LICENSE`.
+
+This product includes software developed by SecureAuth Corporation
+(https://www.secureauth.com/) and Fortra (https://www.fortra.com) — specifically
+a modified copy of [Impacket](https://github.com/fortra/impacket), vendored under
+`vendor/impacket/` and distributed under its own license (`vendor/impacket/LICENSE`).
+See `NOTICE` for details of the modifications made.

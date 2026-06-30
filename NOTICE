@@ -1,0 +1,15 @@
+Charon
+Copyright 2026 J R
+
+This product includes software developed by SecureAuth Corporation
+(https://www.secureauth.com/) and Fortra (https://www.fortra.com).
+
+Specifically, this project vendors a modified copy of Impacket
+(https://github.com/fortra/impacket), which is distributed under the
+Impacket License (a modified Apache Software License 1.1). The full
+text of that license is included at vendor/impacket/LICENSE.
+
+Modifications made to Impacket in this distribution:
+  - impacket/krb5/kerberosv5.py: Added kdcOptions parameter to
+    getKerberosTGT() and getKerberosTGS() to allow configurable
+    KDC options flags instead of hardcoded defaults.
