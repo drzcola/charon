@@ -1,0 +1,3 @@
+[submodule "vendor/impacket"]
+	path = vendor/impacket
+	url = https://github.com/drzcola/impacket

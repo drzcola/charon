@@ -1,4 +1,4 @@
-# Charon
+# ⚰️ Charon
 
 A modular Kerberos post-exploitation framework. Interactive shell, swappable modules, patched Impacket that doesn't fingerprint itself to every EDR on the market.
 
@@ -6,7 +6,7 @@ A modular Kerberos post-exploitation framework. Interactive shell, swappable mod
 
 ---
 
-## Install
+## 🔧 Install
 
 ```bash
 git clone <repo>
@@ -26,9 +26,9 @@ python -m charon
 
 ---
 
-## Usage
+## 🚀 Usage
 
-Works like Metasploit. Load a module, set your options, run it.
+Load a module, set your options, run it.
 
 ```
 [charon]> use kerberos/get_tgt
@@ -46,7 +46,7 @@ Tickets land in `/tmp` by default. Export `KRB5CCNAME` and any Kerberos-aware to
 
 ---
 
-## Commands
+## 🛸 Commands
 
 | Command   | Description                            |
 |-----------|----------------------------------------|
@@ -62,7 +62,7 @@ Tickets land in `/tmp` by default. Export `KRB5CCNAME` and any Kerberos-aware to
 
 ---
 
-## Auth methods
+## 🔑 Auth methods
 
 Every module supports four mutually exclusive auth methods:
 
@@ -77,7 +77,7 @@ For hashes, use `LM:NT` format. If you only have an NT hash, pad the LM part: `a
 
 ---
 
-## KDC options
+## 🥷 KDC options
 
 Impacket's default KDC options (`forwardable, renewable, proxiable`) are a well-known fingerprint. Charon patches this and defaults to Windows-like behavior instead.
 
@@ -103,7 +103,7 @@ Tune it per-module with `info`:
 
 ---
 
-## Modules
+## 🎯 Modules
 
 | Module             | Description   |
 |--------------------|---------------|
@@ -113,7 +113,7 @@ More coming.
 
 ---
 
-## Adding a module
+## 🧩 Adding a module
 
 Drop a file in `charon/modules/`. It gets picked up automatically on next launch.
 
@@ -139,7 +139,7 @@ Auth resolution, KDC option handling, and all standard options come free from `K
 
 ---
 
-## Project layout
+## 📁 Project layout
 
 ```
 charon/
@@ -156,7 +156,7 @@ charon/
 
 ---
 
-## License & attribution
+## ⚖️ License & attribution
 
 Charon is licensed under the Apache License 2.0. See `LICENSE`.
 
