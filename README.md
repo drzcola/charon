@@ -1,8 +1,8 @@
 # Charon
 
-A modular Kerberos post-exploitation framework. Think Metasploit but focused entirely on Kerberos abuse — interactive shell, swappable modules, and a patched Impacket that doesn't scream "attacker tool" at your EDR.
+A modular Kerberos post-exploitation framework. Interactive shell, swappable modules, patched Impacket that doesn't fingerprint itself to every EDR on the market.
 
-> Named after the ferryman of the dead. You're just helping tickets cross the river.
+> Helping you bluff the three-headed dog. Charon's been ferrying souls across the Styx for millennia. A few Kerberos tickets are nothing.
 
 ---
 
@@ -28,7 +28,7 @@ python -m charon
 
 ## Usage
 
-The shell works like Metasploit. Load a module, set your options, run it.
+Works like Metasploit. Load a module, set your options, run it.
 
 ```
 [charon]> use kerberos/get_tgt
@@ -48,17 +48,17 @@ Tickets land in `/tmp` by default. Export `KRB5CCNAME` and any Kerberos-aware to
 
 ## Commands
 
-| Command   | Description                              |
-|-----------|------------------------------------------|
-| `use`     | Load a module                            |
-| `back`    | Unload current module                    |
-| `set`     | Set a module option                      |
-| `unset`   | Clear a module option                    |
-| `options` | Show current module options and values   |
-| `info`    | Show module description and presets      |
-| `run`     | Execute the current module               |
-| `help`    | List all available commands              |
-| `exit`    | Exit Charon                              |
+| Command   | Description                            |
+|-----------|----------------------------------------|
+| `use`     | Load a module                          |
+| `back`    | Unload current module                  |
+| `set`     | Set a module option                    |
+| `unset`   | Clear a module option                  |
+| `options` | Show current module options and values |
+| `info`    | Show module description and presets    |
+| `run`     | Execute the current module             |
+| `help`    | List all available commands            |
+| `exit`    | Exit Charon                            |
 
 ---
 
@@ -66,14 +66,14 @@ Tickets land in `/tmp` by default. Export `KRB5CCNAME` and any Kerberos-aware to
 
 Every module supports four mutually exclusive auth methods:
 
-| Method   | Options needed                  |
-|----------|---------------------------------|
-| Password | `USERNAME` `DOMAIN` `PASSWORD`  |
-| Hash     | `USERNAME` `DOMAIN` `HASHES`    |
-| AES key  | `USERNAME` `DOMAIN` `AES_KEY`   |
-| Ticket   | `CCACHE` (or `KRB5CCNAME` env)  |
+| Method   | Options needed                 |
+|----------|--------------------------------|
+| Password | `USERNAME` `DOMAIN` `PASSWORD` |
+| Hash     | `USERNAME` `DOMAIN` `HASHES`   |
+| AES key  | `USERNAME` `DOMAIN` `AES_KEY`  |
+| Ticket   | `CCACHE` (or `KRB5CCNAME` env) |
 
-For hashes, use the `LM:NT` format. If you only have an NT hash, pad the LM part: `aad3b435b51404eeaad3b435b51404ee:<nthash>`.
+For hashes, use `LM:NT` format. If you only have an NT hash, pad the LM part: `aad3b435b51404eeaad3b435b51404ee:<nthash>`.
 
 ---
 
@@ -81,7 +81,7 @@ For hashes, use the `LM:NT` format. If you only have an NT hash, pad the LM part
 
 Impacket's default KDC options (`forwardable, renewable, proxiable`) are a well-known fingerprint. Charon patches this and defaults to Windows-like behavior instead.
 
-You can tune it per-module:
+Tune it per-module with `info`:
 
 ```
 [charon][kerberos/get_tgt]> info
@@ -93,8 +93,8 @@ You can tune it per-module:
   ┏━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   ┃ Preset   ┃ Flags                                   ┃
   ┡━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-  │ windows  │ forwardable,renewable,canonicalize,...  │  ← default
-  │ impacket │ forwardable,renewable,proxiable         │  ← noisy
+  │ windows  │ forwardable,renewable,canonicalize,...  │  <- default
+  │ impacket │ forwardable,renewable,proxiable         │  <- noisy
   │ minimal  │ forwardable                             │
   └──────────┴─────────────────────────────────────────┘
 
@@ -105,9 +105,9 @@ You can tune it per-module:
 
 ## Modules
 
-| Module              | Description             |
-|---------------------|-------------------------|
-| `kerberos/get_tgt`  | Request a TGT           |
+| Module             | Description   |
+|--------------------|---------------|
+| `kerberos/get_tgt` | Request a TGT |
 
 More coming.
 
@@ -135,7 +135,7 @@ class MyModule(KerberosModule):
         # do the thing
 ```
 
-You get auth resolution, KDC option handling, and all the standard options for free from `KerberosModule`.
+Auth resolution, KDC option handling, and all standard options come free from `KerberosModule`.
 
 ---
 
@@ -161,7 +161,7 @@ charon/
 Charon is licensed under the Apache License 2.0. See `LICENSE`.
 
 This product includes software developed by SecureAuth Corporation
-(https://www.secureauth.com/) and Fortra (https://www.fortra.com) — specifically
-a modified copy of [Impacket](https://github.com/fortra/impacket), vendored under
+(https://www.secureauth.com/) and Fortra (https://www.fortra.com), specifically
+a modified copy of [Impacket](https://github.com/fortra/impacket) vendored under
 `vendor/impacket/` and distributed under its own license (`vendor/impacket/LICENSE`).
 See `NOTICE` for details of the modifications made.
