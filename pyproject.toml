@@ -19,5 +19,5 @@ charon = "charon.__main__:main"
 [tool.hatch.build.targets.wheel]
 packages = ["charon"]
 
-[tool.tach.metadata]
+[tool.hatch.metadata]
 allow-direct-references = true
