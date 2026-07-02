@@ -6,7 +6,7 @@ from prompt_toolkit.styles import Style
 class Shell:
     def __init__(self):
         self.session = PromptSession()
-        self.style = Style.from_dict({"bracket": "#34ebc3 bold", "brand": "#042d7a"})
+        self.style = Style.from_dict({"bracket": "#34ebc3 bold", "brand": "#4a9eff"})
 
     def _get_prompt(self):
         tokens = [
