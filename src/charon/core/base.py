@@ -10,3 +10,6 @@ class BaseModule:
     name: str = ""
     description: str = ""
     options: dict = {}
+
+    def run(self, args: str):
+        raise NotImplementedError

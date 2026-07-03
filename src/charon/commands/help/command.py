@@ -14,7 +14,7 @@ class HelpCommand(BaseCommand):
         table = build_table("Command", "Description")
 
         for name, cmd in entries:
-            table.add_row(f"[#4a9eff]{name}", f"[#4a9eff]{cmd.help}")
+            table.add_row(f"{name}", f"{cmd.help}")
 
         return table
 
