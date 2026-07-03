@@ -2,8 +2,10 @@ import importlib
 from pathlib import Path
 
 from charon.core.base import BaseCommand
+from charon.core.base import BaseModule
 
 COMMANDS: dict[str, BaseCommand] = {}
+MODULES: dict[str, BaseModule] = {}
 
 
 def register(cls):

@@ -24,21 +24,19 @@ class Shell:
         while True:
             try:
                 line = self.session.prompt(self._get_prompt, style=self.style)
+                self.dispatch(line)
             except KeyboardInterrupt:
                 continue
             except EOFError:
                 break
-            self.dispatch(line)
 
     def dispatch(self, line):
         line = line.strip()
         if not line:
             return
-        if line in ("exit", "quit"):
-            raise EOFError
         cmd, _, args = line.partition(" ")
         command = COMMANDS.get(cmd)
         if command is None:
-            print(f"Unknown command: {command}")
+            print(f"Unknown command: {cmd}")
             return
         command.run(args)

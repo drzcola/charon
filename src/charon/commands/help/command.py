@@ -1,9 +1,8 @@
-from rich.table import Table
-
 from charon.core.base import BaseCommand
 from charon.core.registry import COMMANDS
 from charon.core.registry import register
 from charon.io.console import console
+from charon.io.table import build_table
 
 
 @register
@@ -12,13 +11,10 @@ class HelpCommand(BaseCommand):
     help = "Display this help."
 
     def _create_table(self, entries: dict):
-        table = Table()
-
-        table.add_column("Command")
-        table.add_column("Description", no_wrap=True)
+        table = build_table("Command", "Description")
 
         for name, cmd in entries:
-            table.add_row(f"{name}", f"{cmd.help}")
+            table.add_row(f"[#4a9eff]{name}", f"[#4a9eff]{cmd.help}")
 
         return table
 
