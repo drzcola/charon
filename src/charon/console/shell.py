@@ -2,11 +2,15 @@ from prompt_toolkit import PromptSession
 from prompt_toolkit.formatted_text import FormattedText
 from prompt_toolkit.styles import Style
 
+from charon.core.registry import COMMANDS
+from charon.core.registry import discover
+
 
 class Shell:
     def __init__(self):
-        self.session = PromptSession()
         self.style = Style.from_dict({"bracket": "#34ebc3 bold", "brand": "#4a9eff"})
+        self.session = PromptSession()
+        discover()
 
     def _get_prompt(self):
         tokens = [
@@ -32,4 +36,9 @@ class Shell:
             return
         if line in ("exit", "quit"):
             raise EOFError
-        print(f"got: {line}")
+        cmd, _, args = line.partition(" ")
+        command = COMMANDS.get(cmd)
+        if command is None:
+            print(f"Unknown command: {command}")
+            return
+        command.run(args)
